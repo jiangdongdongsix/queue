@@ -15,10 +15,9 @@ export default class QueueHome extends Component {
                     </div>
                     <div className="checkInfo">
                         <input  type="button" className="entry" value="入场验证" />
-                        <Link to = "/QueueUp"><input  type="button" className="checkQueue" value="查看排队" /></Link>
+                        <Link to = "/QueueUp/5"><input  type="button" className="checkQueue" value="查看排队" /></Link>
                     </div>
                 </div>
-
             </div>
         );
     }

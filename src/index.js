@@ -1,9 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {BrowserRouter as Router,browserHistory } from 'react-router-dom'
+import myhistory from './history';
+import RouterList from './rounter';
 import registerServiceWorker from './registerServiceWorker';
-
+// history.listen(location => console.log('location:', location))
 ReactDOM.render(
-    <App />, document.getElementById('root'));
+        <Router history={myhistory}>
+            { RouterList }
+        </Router>,
+    document.getElementById('root'));
 registerServiceWorker();
