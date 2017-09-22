@@ -2,12 +2,9 @@ import React from 'react'
 
 
 class QueueUp extends React.Component{
-    constructor(props) {
+    constructor() {
         super();
-        console.log(props.match);
     }
-
-
     render(){
         return <div>123{this.props.match.params.id}</div>;
     }
