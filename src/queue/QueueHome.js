@@ -30,10 +30,10 @@ export default class QueueHome extends Component {
         );
     }
 
-    static go(){
+     go(){
         alert("666");
         history.push({
-            pathname: '/queueup/5',
+            pathname: '/queueup/5'
         })
     }
 }
