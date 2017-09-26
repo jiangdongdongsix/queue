@@ -69,3 +69,33 @@
         transform: rotate(360deg);
     }
 }
+
+
+/*排队取号*/
+.my-app{
+    width: 27%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: lightgrey;
+}
+
+ .queueInfo{
+     margin: 10px 0;
+     padding: 15px 0;
+     text-align: center;
+     background-color: white;
+}
+.queueInfo span{
+    margin-top: 20px;
+}
+.queueInfo .table {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.queueInfo .waitCount{
+    color: orangered;
+    font-size: 35px;
+}
+
+
