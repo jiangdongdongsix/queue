@@ -76,7 +76,7 @@
     width: 27%;
     height: 100%;
     margin: 0 auto;
-    background-color: lightgrey;
+    /*background-color: lightgrey;*/
 }
 
  .queueInfo{
@@ -97,5 +97,14 @@
     color: orangered;
     font-size: 35px;
 }
+
+.keyborard{margin-top: 70px;}
+.keyborardContent{width: 400px;}
+.keyborardLeft{width:300px;float: left;}
+.keyborardRight{float: right;background: #fff;width: 90px;margin-right: 8px;margin-top: 4px;}
+.keyborardLeft div{float:left;background-color: #ccc; border-radius: 2px; height:60px; width:94px; margin-left:4px;margin-top: 4px;}
+.keyborardLeft div input[type="button"]{width: 94px;height: 60px;font-size: 20px;}
+.keyborardRight div{width: 80px;height:252px;}
+.keyborardRight div input[type="button"]{width: 80px;height:252px;}
 
 
