@@ -1,17 +1,21 @@
+@import '~antd/dist/antd.css';
+
 .App {
-    width: 30%;
+    width: 27%;
     margin: 0 auto;
 }
 
-.App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-}
+/*.App-logo {*/
+    /*animation: App-logo-spin infinite 20s linear;*/
+    /*height: 80px;*/
+/*}*/
 
 .App-header {
-    height: 50%;
-    padding: 20px;
+    background-image: url("./../images/header.png");
+    padding: 170px;
     color: white;
+    overflow: hidden;
+    background-size: 100% auto;
 }
 
 .App-intro {
@@ -44,6 +48,19 @@
     height: 100px;
 }
 
+.desIcon {
+    font-size: 40px;
+    margin-right: 10px;
+    float: left;
+}
+
+.trip p {
+    font-size: 16px;
+}
+
+.footer{
+    text-align: center;
+}
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
