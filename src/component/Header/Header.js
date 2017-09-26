@@ -7,14 +7,14 @@ export default class Header extends Component{
         return(
         <div>
             <Row>
-                <Col span={16}></Col>
+                <Col span={15}></Col>
                 <Col span={1}><Time/></Col> 
-                <Col span={7}></Col>
+                <Col span={8}></Col>
             </Row>
             <Row>
                 <Col span={6}></Col>
                 <Col span={2}>
-                    <Icon type="left" />
+                    <Icon type="left" style={{fontSize:16,color:'red'}}/>
                 </Col>
                 <Col span={6} offset={3}>
                     <h2>入场验证</h2>

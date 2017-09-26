@@ -1,0 +1,54 @@
+@import '~antd/dist/antd.css';
+
+.Verify-method{
+    background-color:#f5f5f5;
+    padding:15px 0px 10px 8px;
+}
+.Verify-method1{
+    padding:20px;
+    vertical-align: bottom;
+    text-align: center;
+}
+.Verify-method1 h3{
+    padding-top:3px;
+    margin-left:-10px;
+}
+.Button-panel{
+    background-color:#f5f5f5;
+}
+
+
+.Code-panel{
+    background-color:#f5f5f5;
+    height:600px;
+}
+.Code-bg{
+    background:url(../img/verify_bg.png) no-repeat;
+    background-size:100% 100%;
+    height:600px;
+    padding-left:20px;
+}
+.Code-content{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left:-100px;
+    margin-top:-100px;
+    text-align: center;
+}
+
+.Code-waitpic{
+    margin-top:-250px;
+}
+.Code-waitinfo{
+    padding-top:280px;
+    padding-left:50px;
+    font-size:14px;
+}
+.Code-waitinfo div{
+    padding:3px;
+}
+
+.Code-waitinfo img{
+    padding-top:10px;
+}
