@@ -12,7 +12,7 @@ import QueueCode from './queue/QueueCode'
 import QueueCodeError from './queue/QueueCodeError'
 import QueueCodeWait from './queue/QueueCodeWait'
 import QueueWaitInfo from './queue/QueueWaitInfo'
-
+import QueueOrderInfo from './queue/QueueOrderInfo'
 
 const RouterList = (
             <div>
@@ -23,6 +23,7 @@ const RouterList = (
                 <Route path='/codeerror' component={QueueCodeError}/>
                 <Route path='/codewait' component={QueueCodeWait}/>
                 <Route path='/waitinfo' component={QueueWaitInfo}/>
+                <Route path='/orderinfo' component={QueueOrderInfo}/>
             </div>
 )
 export default RouterList
