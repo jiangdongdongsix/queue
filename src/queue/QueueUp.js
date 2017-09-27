@@ -61,6 +61,24 @@ class QueueUp extends React.Component{
         this.setState({ tel: e.target.value });
     }
 
+    // confirm(){
+    //     fetch('/queue/update', {
+    //     }).then(function(response) {
+    //         return response.json();
+    //     }).then(function (jsonData) {
+    //         console.log(jsonData);
+    //         that.setState({ queue: {
+    //             tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
+    //             eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
+    //             eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
+    //             waitPeople:jsonData.queueInfo.waitPopulation,
+    //             waitTime:jsonData.queueInfo.waitTime
+    //         } });
+    //     }).catch(function () {
+    //         console.log('获取时间出错');
+    //     });
+    // }
+
     render(){
         const { userName } = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
