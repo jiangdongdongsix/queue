@@ -3,7 +3,7 @@ import './../style/queue.css';
 import {Link} from 'react-router-dom'
 import { Icon  } from 'antd';
 import history from './../history';
-
+import 'whatwg-fetch';
 export default class QueueHome extends Component {
     render() {
         return (
@@ -31,10 +31,31 @@ export default class QueueHome extends Component {
         );
     }
 
-    static go(){
-        alert("666");
-        history.push({
-            pathname: '/queueup/5',
-        })
+     go(){
+         fetch('/queue/home')
+         .then(function(response) {
+             console.log(response);
+         })
+
+         // fetch('/queue/virtualqueue', {
+         //     method: 'POST',
+         //     headers: {
+         //         'Accept': 'application/json',
+         //         'Content-Type': 'application/json'
+         //     },
+         //     body: JSON.stringify({
+         //         customerName: 'Hubot'
+         //     })
+         // }) .then(function(response) {
+         //     console.log(response);
+         // })
+
+        // history.push({
+        //     pathname: '/queueup/5'
+        // })
     }
+
+
+
+
 }

@@ -69,3 +69,42 @@
         transform: rotate(360deg);
     }
 }
+
+
+/*排队取号*/
+.my-app{
+    width: 27%;
+    height: 100%;
+    margin: 0 auto;
+    /*background-color: lightgrey;*/
+}
+
+ .queueInfo{
+     margin: 10px 0;
+     padding: 15px 0;
+     text-align: center;
+     background-color: white;
+}
+.queueInfo span{
+    margin-top: 20px;
+}
+.queueInfo .table {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.queueInfo .waitCount{
+    color: orangered;
+    font-size: 35px;
+}
+
+.keyborard{margin-top: 70px;}
+.keyborardContent{width: 400px;}
+.keyborardLeft{width:300px;float: left;}
+.keyborardRight{float: right;background: #fff;width: 90px;margin-right: 8px;margin-top: 4px;}
+.keyborardLeft div{float:left;background-color: #ccc; border-radius: 2px; height:60px; width:94px; margin-left:4px;margin-top: 4px;}
+.keyborardLeft div input[type="button"]{width: 94px;height: 60px;font-size: 20px;}
+.keyborardRight div{width: 80px;height:252px;}
+.keyborardRight div input[type="button"]{width: 80px;height:252px;}
+
+
