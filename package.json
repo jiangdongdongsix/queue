@@ -23,8 +23,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy":{ "/queue/home": {
-    "target": "http://172.21.84.28:8080/queue/home",
+  "proxy":{ "/queue": {
+    "target": "http://172.21.84.28:8080",
     "ws": true,
     "secure":false
   }
