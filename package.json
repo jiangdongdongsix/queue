@@ -1,3 +1,4 @@
+
 {
   "name": "smart-queue",
   "version": "0.1.0",
@@ -23,9 +24,9 @@
     "eject": "react-scripts eject"
   },
   "proxy":{ "/queue/home": {
-         "target": "http://172.21.84.28:8080/queue/home",
-          "ws": true,
-          "secure":false
-     }
+    "target": "http://172.21.84.28:8080/queue/home",
+    "ws": true,
+    "secure":false
+  }
   }
 }
