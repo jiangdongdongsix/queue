@@ -31,27 +31,23 @@ export default class QueueHome extends Component {
     }
 
      go(){
-         fetch('/queue/home')
-         .then(function(response) {
-             console.log(response);
-         })
-
-         // fetch('/queue/virtualqueue', {
-         //     method: 'POST',
-         //     headers: {
-         //         'Accept': 'application/json',
-         //         'Content-Type': 'application/json'
-         //     },
-         //     body: JSON.stringify({
-         //         customerName: 'Hubot'
-         //     })
-         // }) .then(function(response) {
-         //     console.log(response);
-         // })
-
-        // history.push({
-        //     pathname: '/queueup/5'
-        // })
+        let info = {"customerName": "Hubot"};
+         fetch('/queue/virtualqueue', {
+             method: 'POST',
+             headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(info)
+         }).then(function(response) {
+             return response.json();
+         }).then(function (jsonData) {
+             history.push({
+                 pathname: '/queueup/'+ jsonData.id
+             })
+         }).catch(function () {
+             console.log('出错了');
+         });
     }
 
 

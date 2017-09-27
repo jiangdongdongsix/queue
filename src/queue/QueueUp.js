@@ -4,18 +4,61 @@ import MyHeader from './../component/Header/Header';
 
 const { Header, Footer, Sider, Content } = Layout;
 class QueueUp extends React.Component{
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             userName: '',
+            tel:'',
+            id : props.match.params.id,
+            queue:{
+                tableTypeName:"--",
+                eatMaxNumber:"",
+                eatMinNumBer:"",
+                waitPeople:"--",
+                waitTime:"--"
+            }
         };
     }
     emitEmpty = () => {
         this.userNameInput.focus();
         this.setState({ userName: '' });
     }
+
+
+
     onChangeUserName = (e) => {
         this.setState({ userName: e.target.value });
+        let that = this;
+        fetch('/queue/update', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: this.state.id,
+                eatNumber:e.target.value,
+                seatFlag: false
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData);
+            that.setState({ queue: {
+                tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
+                eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
+                eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
+                waitPeople:jsonData.queueInfo.waitPopulation,
+                waitTime:jsonData.queueInfo.waitTime
+            } });
+        }).catch(function () {
+            console.log('获取时间出错');
+        });
+
+    }
+
+    onChangetel = (e) => {
+        this.setState({ tel: e.target.value });
     }
 
     render(){
@@ -33,27 +76,27 @@ class QueueUp extends React.Component{
                     suffix={<Icon type="right" />}
                     size="large"
                     value={userName}
-                    onChange={this.onChangeUserName}
+                    onChange={this.onChangeUserName.bind(this)}
                     ref={node => this.userNameInput = node}
                 />
                 <div className="queueInfo">
                     <Row>
                         <Col span={8}>
-                            <div>餐桌类型</div>
-                            <div className="table">小桌（1-4人）</div>
+                            <div>餐桌类型{this.state.id}</div>
+                            <div className="table">{this.state.queue.tableTypeName}（{this.state.queue.eatMinNumBer}-{this.state.queue.eatMaxNumber}人）</div>
                         </Col>
                         <Col span={8}>
                             <div>
                                 等待桌数
                             </div>
-                            <span className="waitCount">3</span>
+                            <span className="waitCount">{this.state.queue.waitPeople}</span>
                                桌
                         </Col>
                         <Col span={8}>
                             <div>
                                 预估等待时间
                             </div>
-                            <span className="waitCount">20</span>
+                            <span className="waitCount">{this.state.queue.waitTime}</span>
                             分钟
                         </Col>
                     </Row>
@@ -65,11 +108,10 @@ class QueueUp extends React.Component{
                             suffix={<Icon type="right" />}
                             size="large"
                             value={userName}
-                            onChange={this.onChangeUserName}
+                            onChange={this.onChangetel.bind(this)}
                             ref={node => this.userNameInput = node}
                         />
                     </div>
-
                 </Content>
                     <Footer>
                         <div className="keyborard clearFloat" style={{backgroundColor:'white'}}>
