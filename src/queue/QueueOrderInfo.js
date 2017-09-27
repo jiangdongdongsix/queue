@@ -4,7 +4,27 @@ import GridHeader from '../component/Header/GridHeader';
 import '../style/verify.css';
 import Ordersucceed from '../img/order_succeed.png'
 import QRcode from '../img/QRcode.png'
+import { Button } from 'antd';
+import history from './../history';
+
 export default class QueueCode extends Component{
+
+    constructor(props) {
+        super();
+        let data = JSON.parse(props.match.params.queueinfo);
+        this.state = {
+            waitTime :data.waitTime,
+            waitPeople:data.waitPopulation
+        };
+    }
+
+    gohome(){
+        history.push({
+            pathname: '/'
+        })
+    }
+
+
     render(){
         return (
             <div className='OrderInfo'>
@@ -34,20 +54,29 @@ export default class QueueCode extends Component{
                                     </Row>
                                     <Row>
                                         <Col span={1}></Col>
-                                        <Col span={6}>30</Col>
-                                        <Col span={6}>30分钟</Col>
+                                        <Col span={6}>{this.state.waitPeople}</Col>
+                                        <Col span={6}>{this.state.waitTime}分钟</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}></Col>
                                         <Col span={8}><img src={QRcode} alt='QRcode' style={{width:'60%',heigth:'60%'}}/></Col>
                                         <Col span={8}></Col>
                                     </Row>
+                                    <Row>
+                                        <Col span={8}></Col>
+                                        <Col span={8}><Button type="danger" onClick={this.gohome}>返回首页</Button></Col>
+                                        <Col span={8}></Col>
+                                    </Row>
+
                                 </div>
                             </div>
                         </div>
                     </Col>
                     <Col span={8}></Col>
                 </Row>
+                <div>
+
+                </div>
             </div>
         );
     }
