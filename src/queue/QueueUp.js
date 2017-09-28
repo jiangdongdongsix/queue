@@ -1,7 +1,7 @@
 import React from 'react'
 import { Layout,Input, Icon, Row, Col } from 'antd';
 import MyHeader from './../component/Header/Header';
-
+import history from './../history';
 const { Header, Footer, Sider, Content } = Layout;
 class QueueUp extends React.Component{
     constructor(props) {
@@ -61,26 +61,26 @@ class QueueUp extends React.Component{
         this.setState({ tel: e.target.value });
     }
 
-    // confirm(){
-    //     fetch('/queue/update', {
-    //     }).then(function(response) {
-    //         return response.json();
-    //     }).then(function (jsonData) {
-    //         console.log(jsonData);
-    //         that.setState({ queue: {
-    //             tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
-    //             eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
-    //             eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
-    //             waitPeople:jsonData.queueInfo.waitPopulation,
-    //             waitTime:jsonData.queueInfo.waitTime
-    //         } });
-    //     }).catch(function () {
-    //         console.log('获取时间出错');
-    //     });
-    // }
+    confirm(){
+        console.log(this.state.id);
+        console.log(this.state.tel);
+        fetch('/queue/confirmqueue?queueId='+ this.state.id +'&tel='+ this.state.tel, {
+        }).then(function(response) {
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData);
+
+            history.push({
+                pathname: '/orderinfo/'+ JSON.stringify(jsonData.queueInfo)
+            })
+        }).catch(function () {
+            console.log('获取时间出错');
+        });
+    }
 
     render(){
         const { userName } = this.state;
+        const { tel } = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
         return (
 
@@ -125,7 +125,7 @@ class QueueUp extends React.Component{
                             prefix={<Icon type="mobile" />}
                             suffix={<Icon type="right" />}
                             size="large"
-                            value={userName}
+                            value={tel}
                             onChange={this.onChangetel.bind(this)}
                             ref={node => this.userNameInput = node}
                         />
@@ -151,7 +151,7 @@ class QueueUp extends React.Component{
                                     </div>
                                     <div className="keyborardRight" >
                                         <div>
-                                            <input type="button" value="立即取号"/>
+                                            <input type="button" value="立即取号" onClick={this.confirm.bind(this)}/>
                                         </div>
                                     </div>
                                 </div>

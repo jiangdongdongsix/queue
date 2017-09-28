@@ -14,7 +14,7 @@ export default class GridHeader extends Component{
             <Row>
                 <Col span={8}></Col>
                 <Col span={2}>
-                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick={this.goback()}/>
+                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} />
                 </Col>
                 <Col span={4} style={{textAlign:'center'}}>
                     <h2>{this.props.name}</h2>
@@ -23,10 +23,5 @@ export default class GridHeader extends Component{
             </Row>
         </div>
         );
-    }
-
-    goback(){
-        // history.goBack();
-        console.log("返回");
     }
 }
