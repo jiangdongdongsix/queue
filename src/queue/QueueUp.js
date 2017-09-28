@@ -29,31 +29,34 @@ class QueueUp extends React.Component{
     onChangeUserName = (e) => {
         this.setState({ userName: e.target.value });
         let that = this;
-        fetch('/queue/update', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: this.state.id,
-                eatNumber:e.target.value,
-                seatFlag: false
-            }) 
-        }).then(function(response) {
-            return response.json();
-        }).then(function (jsonData) {
-            console.log(jsonData);
-            that.setState({ queue: {
-                tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
-                eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
-                eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
-                waitPeople:jsonData.queueInfo.waitPopulation,
-                waitTime:jsonData.queueInfo.waitTime
-            } });
-        }).catch(function () {
-            console.log('获取时间出错');
-        });
+        if(e.target.value > 0 && e.target.value != null){
+            fetch('/queue/update', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: this.state.id,
+                    eatNumber:e.target.value,
+                    seatFlag: false
+                })
+            }).then(function(response) {
+                return response.json();
+            }).then(function (jsonData) {
+                console.log(jsonData);
+                that.setState({ queue: {
+                    tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
+                    eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
+                    eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
+                    waitPeople:jsonData.queueInfo.waitPopulation,
+                    waitTime:jsonData.queueInfo.waitTime
+                } });
+            }).catch(function () {
+                console.log('获取时间出错');
+            });
+        }
+
 
     }
 
