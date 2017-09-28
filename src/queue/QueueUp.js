@@ -2,6 +2,7 @@ import React from 'react'
 import { Layout,Input, Icon, Row, Col } from 'antd';
 import MyHeader from './../component/Header/Header';
 import history from './../history';
+import Time from '../component/Time/Time';
 const { Header, Footer, Sider, Content } = Layout;
 class QueueUp extends React.Component{
     constructor(props) {
@@ -81,6 +82,21 @@ class QueueUp extends React.Component{
         });
     }
 
+    cancel(){
+        console.log(this.state.id);
+        fetch('/queue/cancel?queueId='+ this.state.id).then(function(response) {
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData);
+
+            history.push({
+                pathname: '/'
+            })
+        }).catch(function () {
+            console.log('取消出错');
+        });
+    }
+
     render(){
         const { userName } = this.state;
         const { tel } = this.state;
@@ -89,7 +105,22 @@ class QueueUp extends React.Component{
 
             <div className="my-app">
                 <Layout>
-                <MyHeader name="排队取号"/>
+                    <div style={{backgroundColor:'white'}}>
+                        <Row>
+                            <Col span={20}></Col>
+                            <Col span={1}><Time/></Col>
+                            <Col span={3}></Col>
+                        </Row>
+                        <Row>
+                            <Col span={8}>
+                                <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick = {this.cancel.bind(this)}/>
+                            </Col>
+                            <Col span={8} offset={3}>
+                                <h2>排队取号</h2>
+                            </Col>
+                            <Col span={8}></Col>
+                        </Row>
+                    </div>
                 <Content>
                 <Input
                     placeholder="请输入用餐人数"
