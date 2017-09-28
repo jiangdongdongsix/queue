@@ -106,7 +106,7 @@ export default class QueueVerify extends Component{
                         <div className="clearFloat" style={{marginTop:'10px'}}>
                         <div className="marginSet">
                             <div className="keyborardContent clearFloat">
-                                <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'75%',marginLeft:'30px'}}>
+                                <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'70%',marginLeft:'50px'}}>
                                     <div><input onClick={this.addNumber.bind(this)} type="button" value="1"/></div>
                                     <div><input type="button" value="2"/></div>
                                     <div><input type="button" value="3"/></div>
@@ -120,7 +120,7 @@ export default class QueueVerify extends Component{
                                     <div><input type="button" value="0"/></div>
                                     <div><input type="button" value="X"/></div>
                                 </div>
-                                <div className="keyborardRight" style={{width:'15%'}} >
+                                <div className="keyborardRight" style={{width:'10%'}} >
                                     <div>
                                         <input type="button" value="验证" onClick={this.verify.bind(this)}/>
                                     </div>
