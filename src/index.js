@@ -4,6 +4,7 @@ import RouterList from './rounter';
 import { Router } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker';
 import history from './history';
+import './index.css'
 
 
 const unlisten = history.listen(location => {
