@@ -38,8 +38,9 @@ export default class QueueCode extends Component{
                                     </Row>
                                     <Row>
                                         <Col span={1}></Col>
-                                        <Col span={6}>30</Col>
-                                        <Col span={6}>30分钟</Col>
+                                        <Col span={6} className='Code-waitcolor'>30</Col>
+                                        <Col span={6} className='Code-waitcolor'>30分钟</Col>
+                                        <Col span={6} className='Code-waitcolor' style={{fontSize:'18px'}}>333</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}></Col>
