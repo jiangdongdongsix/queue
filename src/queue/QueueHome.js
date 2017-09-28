@@ -15,7 +15,7 @@ export default class QueueHome extends Component {
                         <input  type="button" className="btn btn-success" value="排队抽号" onClick={this.go} />
                     </div>
                     <div className="checkInfo">
-                        <input  type="button" className="entry" value="入场验证" />
+                        <input  type="button" className="entry" value="入场验证" onClick={this.verfiy} />
                         <input  type="button" className="checkQueue" value="查看排队" onClick={this.waitInfo}/>
                     </div>
                     <div  className="trip">
@@ -56,6 +56,11 @@ export default class QueueHome extends Component {
         })
     }
 
+    verfiy(){
+        history.push({
+            pathname:'/verify'
+        })
+    }
 
 
 }

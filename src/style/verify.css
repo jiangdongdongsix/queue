@@ -44,7 +44,7 @@
     margin-top:-250px;
 }
 .Code-waitinfo{
-    padding-top:230px;
+    padding-top:220px;
     padding-left:30px;
     font-size:14px;
 }
@@ -58,6 +58,9 @@
     padding-top:10px;
 }
 
+.Code-waitinfo .Code-waitcolor{
+    color:orange;
+}
 .Wait-bg{
     background-color:#f0f0f0;
     text-align:center;

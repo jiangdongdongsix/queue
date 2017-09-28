@@ -73,11 +73,11 @@ export default class QueueWaitInfo extends Component{
     
     render(){
         return(
-            <div>
+            <div className='Code'>
                 <GridHeader name='等位信息'/>
-                <Row>
+                <Row style={{height:'90%'}}>
                     <Col span='8'></Col>
-                    <Col span='8' className='Wait-bg'>
+                    <Col span='8' className='Wait-bg' style={{height:'100%'}}>
                         <Row className='Wait-title'>
                             <Col span='6'>队列类型</Col>
                             <Col span='6'>当前叫号</Col>
@@ -105,7 +105,7 @@ export default class QueueWaitInfo extends Component{
                         <Row>
                             <Col span='4'></Col>
                             <Col span='16'>
-                                <Button type='primary' className='Wait-button' size='large' onClick={this.handleQueueCall.bind(this)}>排队取号</Button>
+                                <Button type='primary' className='Wait-button' size='large' onClick={this.handleQueueCall.bind(this)}>返回首页</Button>
                             </Col>
                             <Col span='4'></Col>
                         </Row>
