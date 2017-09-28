@@ -39,7 +39,7 @@ class QueueUp extends React.Component{
                 id: this.state.id,
                 eatNumber:e.target.value,
                 seatFlag: false
-            })
+            }) 
         }).then(function(response) {
             return response.json();
         }).then(function (jsonData) {
