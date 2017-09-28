@@ -23,7 +23,7 @@ const RouterList = (
                 <Route path='/codeerror' component={QueueCodeError}/>
                 <Route path='/codewait' component={QueueCodeWait}/>
                 <Route path='/waitinfo' component={QueueWaitInfo}/>
-                <Route path='/orderinfo' component={QueueOrderInfo}/>
+                <Route path='/orderinfo/:queueinfo' component={QueueOrderInfo}/>
             </div>
 )
 export default RouterList
