@@ -20,8 +20,9 @@ export default class Manage extends Component{
             }).then(function (jsonData) {
                 console.log(jsonData);
                 that.setState({
-                    orderNumber:jsonData.extractNumber.queueId,
-                    tableNumner:jsonData.extractNumber.tableNumber.name  
+                    orderNumber:jsonData.extractNumber.id ,
+                    tableNumner:jsonData.extractNumber.tableNumber.tableType.describe + jsonData.extractNumber.tableNumber.name 
+                    
                 }
                 );
             }).catch(function () {
@@ -64,7 +65,6 @@ export default class Manage extends Component{
                             <Col span={3}><Button type='primary'>暂停叫号</Button></Col>
                         </Row>
                     </Content>
-                    <Footer>Footer</Footer>
                     </Layout>
                 </Layout>
             </div>

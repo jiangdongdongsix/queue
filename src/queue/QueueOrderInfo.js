@@ -70,7 +70,6 @@ export default class QueueCode extends Component{
                                         <Col span={8}><Button type="danger" onClick={this.gohome}>返回首页</Button></Col>
                                         <Col span={10}></Col>
                                     </Row>
-
                                 </div>
                             </div>
                         </div>

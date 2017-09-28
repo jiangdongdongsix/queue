@@ -51,7 +51,7 @@ export default class QueueWaitInfo extends Component{
                 bigNumber:'C100',
                 bigWait:jsonData.queueInfo[2].waitPopulation,
                 bigTime:jsonData.queueInfo[2].waitTime,
-                bigMin:jsonData.queueInfo[2].tableType.eatMaxNumber,
+                bigMin:jsonData.queueInfo[2].tableType.eatMinNumber,
                 bigMax:jsonData.queueInfo[2].tableType.eatMaxNumber
             })
         }).catch(function () {
@@ -97,8 +97,8 @@ export default class QueueWaitInfo extends Component{
                             <Col span='6'>>{this.state.middleTime}分钟</Col>
                         </Row>
                         <Row className='Wait-type'>
-                            <Col span='6'>{this.state.btableType}({this.state.bigMin}-{this.state.bigMax}人)</Col>
-                            <Col span='6'>{this.state.bigTime}</Col>
+                            <Col span='7'>{this.state.btableType}({this.state.bigMin}-{this.state.bigMax}人)</Col>
+                            <Col span='5'>{this.state.bigNumber}</Col>
                             <Col span='6'>{this.state.bigTime}桌</Col>
                             <Col span='6'>>{this.state.bigTime}分钟</Col>
                         </Row>

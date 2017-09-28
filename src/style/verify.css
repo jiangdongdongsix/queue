@@ -45,13 +45,15 @@
 }
 .Code-waitinfo{
     padding-top:220px;
-    padding-left:50px;
+    padding-left:30px;
     font-size:14px;
 }
 .Code-waitinfo div{
-    padding:3px;
+    padding:1px;
 }
-
+.Code-waitinfo .Code-waitcolor{
+    color:orange;
+}
 .Code-waitinfo img{
     padding-top:10px;
 }
