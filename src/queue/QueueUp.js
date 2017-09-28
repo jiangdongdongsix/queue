@@ -134,7 +134,6 @@ class QueueUp extends React.Component{
                         />
                     </div>
                 </Content>
-
                     <div className="footer">
                         <div className="keyborard clearFloat">
                             <div className="marginSet">
