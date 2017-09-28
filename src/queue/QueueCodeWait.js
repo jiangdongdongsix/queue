@@ -5,9 +5,24 @@ import '../style/verify.css';
 import codes from '../img/wait_pic.png'
 import QRcode from '../img/QRcode.png'
 export default class QueueCode extends Component{
+
+    constructor(props) {
+        super();
+        let data = JSON.parse(props.match.params.queue);
+        console.log(data);
+        this.state = {
+            waitTime :data.waitTime,
+            waitPeople:data.waitPopulation,
+            queueId: data.queueId,
+            decription:data.tableType.describe,
+            tableTypeName:data.tableType.tableTypeName
+        };
+    }
+
     render(){
         return (
             <div>
+
                 <GridHeader name='扫码入场'/>
                 <Row>
                     <Col span={8}> </Col>
@@ -32,14 +47,14 @@ export default class QueueCode extends Component{
                                         <Col span={4}>A12</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={1}></Col>
-                                        <Col span={6}>等待桌数</Col>
-                                        <Col span={6}>预估时间</Col>
+                                        <Col span={8}>等待桌数</Col>
+                                        <Col span={8}>预估时间</Col>
+                                        <Col span={8}>{this.state.decription+this.state.queueId}</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={1}></Col>
-                                        <Col span={6}>30</Col>
-                                        <Col span={6}>30分钟</Col>
+                                        <Col span={8}>{this.state.waitPeople}</Col>
+                                        <Col span={8}>{this.state.waitTime}分钟</Col>
+                                        <Col span={8}>{this.state.tableTypeName}</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}></Col>

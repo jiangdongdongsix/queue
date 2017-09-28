@@ -3,18 +3,47 @@ import { Row,Col,Icon,Input,Button } from 'antd';
 import GridHeader from '../component/Header/GridHeader';
 import verify from '../img/verify_pic.png';
 import '../style/verify.css';
-
+import history from './../history';
 export default class QueueVerify extends Component{
+
+    constructor(){
+        super();
+        this.state = {
+            queueNumber:""
+        }
+    }
+
 
     handleNumber(events){
         console.log('333');
-        
     }
     
     addNumber(event){
         console.log(this.value);
     }
+
+    onChangeUserName=(e) => {
+        this.setState({ queueNumber: e.target.value });
+    }
+
+    verify(){
+        fetch("/queue/personalqueueinfo?queueNumber=" + this.state.queueNumber)
+            .then(function(response) {
+                return response.json();
+            }).then(function (jsonData) {
+            console.log(jsonData);
+            history.push({
+                pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
+            })
+        }).catch(function () {
+            console.log('获取时间出错');
+        });
+
+    }
+
     render(){
+
+        const { queueNumber}= this.state;
         return (
                 <div className='Verify'>
                 <GridHeader name='入场验证'/>
@@ -34,7 +63,10 @@ export default class QueueVerify extends Component{
                             <h3>排号:</h3>
                         </Col>
                         <Col span={5}>
-                            <Input placeholder='请输入排号' style={{border:0}} onFocus={this.handleNumber.bind(this)}/>
+                            <Input placeholder='请输入排号'
+                                   style={{border:0}} onFocus={this.handleNumber.bind(this)}
+                                   value={queueNumber}
+                                   onChange={this.onChangeUserName.bind(this)}/>
                         </Col>
                         <Col span={8}></Col>
                     </Row>
@@ -82,7 +114,7 @@ export default class QueueVerify extends Component{
                                 </div>
                                 <div className="keyborardRight"style={{width:'15%'}} >
                                     <div>
-                                        <input type="button" value="验证"/>
+                                        <input type="button" value="验证" onClick={this.verify.bind(this)}/>
                                     </div>
                                 </div>
                             </div>
