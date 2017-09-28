@@ -29,7 +29,6 @@ export default class QueueCode extends Component{
         })
     }
 
-
     render(){
         return (
             <div className='OrderInfo'>

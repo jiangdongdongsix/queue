@@ -9,9 +9,9 @@ export default class QueueCode extends Component{
         return (
             <div className='Code'>
                 <GridHeader name='扫码入场'/>
-                <Row>
+                <Row style={{height:'90%'}}>
                     <Col span={8}> </Col>
-                    <Col span={8}>
+                    <Col span={8} style={{height:'100%'}}>
                         <div className='Code-panel'>
                             <div className='Code-bg'>
                                 <ul className='Code-content'>

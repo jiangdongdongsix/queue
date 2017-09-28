@@ -9,8 +9,8 @@ export default class Manage extends Component{
         super();
         this.state = {
             tableID: '',
-            orderNumber: '',
-            tableNumner: ''
+            orderNumber: '--',
+            tableNumner: '--'
         }
     }
     handleCall(event){
@@ -25,6 +25,7 @@ export default class Manage extends Component{
                 }
                 );
             }).catch(function () {
+                console.log('叫号失败');
             });
         }
 
@@ -36,7 +37,8 @@ export default class Manage extends Component{
 
     render(){
         return (
-                <Layout style={{height:'600px'}}>
+            <div style={{height:'100%'}}>
+                <Layout style={{height:'100%'}}>
                     <Sider className='Manage-sider'>
                         <h3>排队管理客户端</h3>
                         <ul>
@@ -58,13 +60,14 @@ export default class Manage extends Component{
                             <Col span={1}></Col>
                             <Col span={3}><Button type='primary' onClick={this.handleCall.bind(this)}>呼叫排号</Button></Col>
                             <Col span={1}></Col>
-                            <Col span={10} style={{color:'orange',fontSize:'14px'}}><Icon type="notification"/>当前叫号:{this.state.orderNumber}顾客,请到{this.state.tableNumner}桌就餐</Col>
+                            <Col span={10} style={{color:'orange',fontSize:'14px'}}><Icon type="notification"/>当前叫号: {this.state.orderNumber}顾客,请到{this.state.tableNumner}桌就餐</Col>
                             <Col span={3}><Button type='primary'>暂停叫号</Button></Col>
                         </Row>
                     </Content>
                     <Footer>Footer</Footer>
                     </Layout>
                 </Layout>
+            </div>
         )
     }
 }

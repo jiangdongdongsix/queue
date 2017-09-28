@@ -16,7 +16,7 @@ import QueueOrderInfo from './queue/QueueOrderInfo'
 import Manage from './queue/Manage'
 
 const RouterList = (
-            <div>
+            <div style={{height:'100%'}}>
                 <Route exact path='/' component={App} />
                 <Route path='/queueup/:id' component={QueueUp} />
                 <Route path ='/verify' component={QueueVerify}/>
@@ -26,7 +26,6 @@ const RouterList = (
                 <Route path='/waitinfo' component={QueueWaitInfo}/>
                 <Route path='/manage' component={Manage}/>
                 <Route path='/orderinfo/:queueinfo' component={QueueOrderInfo}/>
-
             </div>
 )
 export default RouterList

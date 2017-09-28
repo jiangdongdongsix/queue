@@ -21,12 +21,12 @@ export default class QueueCode extends Component{
 
     render(){
         return (
-            <div>
 
+            <div className='Code'>
                 <GridHeader name='扫码入场'/>
-                <Row>
-                    <Col span={8}> </Col>
-                    <Col span={8}>
+                <Row style={{height:'90%'}}>
+                    <Col span={8}></Col>
+                    <Col span={8} style={{height:'100%'}}>
                         <div className='Code-panel'>
                             <div className='Code-bg'>
                                 <ul className='Code-content Code-waitpic'>
