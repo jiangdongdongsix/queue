@@ -24,7 +24,7 @@
     "eject": "react-scripts eject"
   },
   "proxy":{ "/queue": {
-    "target": "http://172.21.84.28:8080",
+    "target": "http://172.21.84.161:3333/iqesTT",
     "ws": true,
     "secure":false
   }
