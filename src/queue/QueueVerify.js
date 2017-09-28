@@ -37,6 +37,7 @@ export default class QueueVerify extends Component{
                     pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
                 })
             }else{
+
                 history.push({
                     pathname: '/code'
                 })

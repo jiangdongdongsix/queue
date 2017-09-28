@@ -160,8 +160,11 @@ class QueueUp extends React.Component{
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
+                    <div style={{height:'60px'}}>
+
+                    </div>
                 </Layout>
             </div>
 
