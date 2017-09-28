@@ -12,11 +12,11 @@ export default class QueueHome extends Component {
                 </div>
                 <div className="centerInfo">
                     <div className="queueInfo">
-                        <input  type="button" className="btn btn-success" value="排队抽号" />
+                        <input  type="button" className="btn btn-success" value="排队抽号" onClick={this.go} />
                     </div>
                     <div className="checkInfo">
-                        <input  type="button" className="entry" value="入场验证" onClick={this.go} />
-                        <Link to = "/queueup/5"><input  type="button" className="checkQueue" value="查看排队" /></Link>
+                        <input  type="button" className="entry" value="入场验证" />
+                       <input  type="button" className="checkQueue" value="查看排队" />
                     </div>
                     <div  className="trip">
                         <Icon type="desktop" className = "desIcon"/>
