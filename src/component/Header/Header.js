@@ -13,7 +13,7 @@ export default class MyHeader extends Component{
             </Row>
             <Row>
                 <Col span={8}>
-                    <Icon type="left"  style={{color:'orangered',fontSize: 20}}/>
+                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick = {this.cancel}/>
                 </Col>
                 <Col span={8} offset={3}>
                     <h2>{this.props.name}</h2>
@@ -22,5 +22,10 @@ export default class MyHeader extends Component{
             </Row>
         </div>
         );
+    }
+
+
+    cancel(){
+        fetch()
     }
 }
