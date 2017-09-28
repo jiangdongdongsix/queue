@@ -32,9 +32,16 @@ export default class QueueVerify extends Component{
                 return response.json();
             }).then(function (jsonData) {
             console.log(jsonData);
-            history.push({
-                pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
-            })
+            if(jsonData.queueInfo.waitTime >0){
+                history.push({
+                    pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
+                })
+            }else{
+                history.push({
+                    pathname: '/code'
+                })
+            }
+
         }).catch(function () {
             console.log('获取时间出错');
         });
