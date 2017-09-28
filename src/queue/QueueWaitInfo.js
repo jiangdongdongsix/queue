@@ -4,16 +4,19 @@ import '../style/verify.css';
 import { Row,Col,Button } from 'antd';
 
 export default class QueueWaitInfo extends Component{
-    static defaultProps = {
-        smallNumber:'',
-        smallTime:'',
-        smallWait:'',
-        middleNumber:'',
-        middleTime:'',
-        middleWait:'',
-        bigNumber:'',
-        bigTime:'',
-        bigWait:''
+    constructor(props) {
+        super();
+        this.state = {
+            smallNumber:"",
+            smallWait:"",
+            smallTime:"",
+            middleNumber:"",
+            middleWait:"",
+            middleTime:"",
+            bigNumber:"",
+            bigWait:"",
+            bigTime:"",
+        };
     }
     render(){
         return(
@@ -30,21 +33,21 @@ export default class QueueWaitInfo extends Component{
                         </Row>
                         <Row className='Wait-type'>
                             <Col span='6'>小桌(1-4人)</Col>
-                            <Col span='6'>{this.props.smallNumber}</Col>
-                            <Col span='6'>{this.props.smallWait}桌</Col>
-                            <Col span='6'>>{this.props.smallTime}分钟</Col>
+                            <Col span='6'>{this.state.smallNumber}</Col>
+                            <Col span='6'>{this.state.smallWait}桌</Col>
+                            <Col span='6'>>{this.state.smallTime}分钟</Col>
                         </Row>
                         <Row className='Wait-type'>
                             <Col span='6'>中桌(5-6人)</Col>
-                            <Col span='6'>{this.props.middleNumber}</Col>
-                            <Col span='6'>{this.props.middleWait}桌</Col>
-                            <Col span='6'>>{this.props.middleTime}分钟</Col>
+                            <Col span='6'>{this.state.middleNumber}</Col>
+                            <Col span='6'>{this.state.middleWait}桌</Col>
+                            <Col span='6'>>{this.state.middleTime}分钟</Col>
                         </Row>
                         <Row className='Wait-type'>
                             <Col span='6'>大桌(6人以上)</Col>
-                            <Col span='6'>{this.props.bigTime}</Col>
-                            <Col span='6'>{this.props.bigTime}桌</Col>
-                            <Col span='6'>>{this.props.bigTime}分钟</Col>
+                            <Col span='6'>{this.state.bigTime}</Col>
+                            <Col span='6'>{this.state.bigTime}桌</Col>
+                            <Col span='6'>>{this.state.bigTime}分钟</Col>
                         </Row>
                         <Row>
                             <Col span='4'></Col>

@@ -5,9 +5,18 @@ import verify from '../img/verify_pic.png';
 import '../style/verify.css';
 
 export default class QueueVerify extends Component{
+
+    handleNumber(events){
+        console.log('333');
+        
+    }
+    
+    addNumber(event){
+        console.log(this.value);
+    }
     render(){
         return (
-            <div className='Verify'>
+                <div className='Verify'>
                 <GridHeader name='入场验证'/>
                 <div>
                     <Row>
@@ -25,7 +34,7 @@ export default class QueueVerify extends Component{
                             <h3>排号:</h3>
                         </Col>
                         <Col span={5}>
-                            <Input placeholder='请输入排号' style={{border:0}}/>
+                            <Input placeholder='请输入排号' style={{border:0}} onFocus={this.handleNumber.bind(this)}/>
                         </Col>
                         <Col span={8}></Col>
                     </Row>
@@ -58,7 +67,7 @@ export default class QueueVerify extends Component{
                         <div className="marginSet">
                             <div className="keyborardContent clearFloat">
                                 <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'75%'}}>
-                                    <div><input type="button" value="1"/></div>
+                                    <div><input onClick={this.addNumber.bind(this)} type="button" value="1"/></div>
                                     <div><input type="button" value="2"/></div>
                                     <div><input type="button" value="3"/></div>
                                     <div><input type="button" value="4"/></div>
@@ -73,7 +82,7 @@ export default class QueueVerify extends Component{
                                 </div>
                                 <div className="keyborardRight"style={{width:'15%'}} >
                                     <div>
-                                        <input type="button" value="立即取号"/>
+                                        <input type="button" value="验证"/>
                                     </div>
                                 </div>
                             </div>
