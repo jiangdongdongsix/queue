@@ -98,7 +98,13 @@
     font-size: 35px;
 }
 
-.keyborard{margin-top: 70px;}
+.footer{
+    margin: 0 auto;
+}
+.keyborard{
+    margin-top: 70px;
+    /*margin: 0 auto;*/
+}
 .keyborardContent{width: 400px;}
 .keyborardLeft{width:300px;float: left;}
 .keyborardRight{float: right;background: #fff;width: 90px;margin-right: 8px;margin-top: 4px;}

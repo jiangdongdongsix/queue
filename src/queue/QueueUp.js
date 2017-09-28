@@ -134,41 +134,35 @@ class QueueUp extends React.Component{
                         />
                     </div>
                 </Content>
-                    <Footer>
-                        <Row>
-                            <Col span={2}></Col>
-                            <Col span={18}>
-                                <div className="keyborard clearFloat" style={{backgroundColor:'white'}}>
-                                    <div className="marginSet">
-                                        <div className="keyborardContent clearFloat">
-                                            <div className="keyborardLeft clearFloat" id="keyborardNumber">
-                                                <div><input type="button" value="1"/></div>
-                                                <div><input type="button" value="2"/></div>
-                                                <div><input type="button" value="3"/></div>
-                                                <div><input type="button" value="4"/></div>
-                                                <div><input type="button" value="5"/></div>
-                                                <div><input type="button" value="6"/></div>
-                                                <div><input type="button" value="7"/></div>
-                                                <div><input type="button" value="8"/></div>
-                                                <div><input type="button" value="9"/></div>
-                                                <div><input type="button" value="清空"/></div>
-                                                <div><input type="button" value="0"/></div>
-                                                <div><input type="button" value="X"/></div>
-                                            </div>
-                                            <div className="keyborardRight" >
-                                                <div>
-                                                    <input type="button" value="立即取号" onClick={this.confirm.bind(this)}/>
-                                                </div>
-                                            </div>
+
+                    <div className="footer">
+                        <div className="keyborard clearFloat">
+                            <div className="marginSet">
+                                <div className="keyborardContent clearFloat">
+                                    <div className="keyborardLeft clearFloat" id="keyborardNumber">
+                                        <div><input type="button" value="1"/></div>
+                                        <div><input type="button" value="2"/></div>
+                                        <div><input type="button" value="3"/></div>
+                                        <div><input type="button" value="4"/></div>
+                                        <div><input type="button" value="5"/></div>
+                                        <div><input type="button" value="6"/></div>
+                                        <div><input type="button" value="7"/></div>
+                                        <div><input type="button" value="8"/></div>
+                                        <div><input type="button" value="9"/></div>
+                                        <div><input type="button" value="清空"/></div>
+                                        <div><input type="button" value="0"/></div>
+                                        <div><input type="button" value="X"/></div>
+                                    </div>
+                                    <div className="keyborardRight" >
+                                        <div>
+                                            <input type="button" value="立即取号" onClick={this.confirm.bind(this)}/>
                                         </div>
                                     </div>
                                 </div>
-                            </Col>
-                            <Col span={4}></Col>
+                            </div>
+                        </div>
+                    </div>
 
-                        </Row>
-
-                    </Footer>
                 </Layout>
             </div>
 
