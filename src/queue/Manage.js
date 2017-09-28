@@ -20,8 +20,8 @@ export default class Manage extends Component{
             }).then(function (jsonData) {
                 console.log(jsonData);
                 that.setState({
-                    orderNumber:jsonData.extractNumber.id ,
-                    tableNumner:jsonData.extractNumber.tableNumber.tableType.describe + jsonData.extractNumber.tableNumber.name 
+                    orderNumber:jsonData.extractNumber.tableNumber.tableType.describe +jsonData.extractNumber.id ,
+                    tableNumner: jsonData.extractNumber.tableNumber.name 
                     
                 }
                 );
