@@ -136,12 +136,11 @@ class QueueUp extends React.Component{
                 </Content>
                     <Footer>
                         <Row>
-                            <Col span={2}></Col>
-                            <Col span={18}>
+                            <Col span={8}>
                                 <div className="keyborard clearFloat" style={{backgroundColor:'white'}}>
                                     <div className="marginSet">
                                         <div className="keyborardContent clearFloat">
-                                            <div className="keyborardLeft clearFloat" id="keyborardNumber">
+                                            <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'75%'}}>
                                                 <div><input type="button" value="1"/></div>
                                                 <div><input type="button" value="2"/></div>
                                                 <div><input type="button" value="3"/></div>
@@ -155,7 +154,7 @@ class QueueUp extends React.Component{
                                                 <div><input type="button" value="0"/></div>
                                                 <div><input type="button" value="X"/></div>
                                             </div>
-                                            <div className="keyborardRight" >
+                                            <div className="keyborardRight" style={{width:'15%'}}>
                                                 <div>
                                                     <input type="button" value="立即取号" onClick={this.confirm.bind(this)}/>
                                                 </div>
@@ -164,7 +163,7 @@ class QueueUp extends React.Component{
                                     </div>
                                 </div>
                             </Col>
-                            <Col span={4}></Col>
+                            <Col span={8}></Col>
 
                         </Row>
 

@@ -33,23 +33,22 @@ export default class QueueCode extends Component{
         return (
             <div className='OrderInfo'>
                 <GridHeader name='单号详情'/>
-                <Row>
+                <Row style={{height:'90%'}}>
                     <Col span={8}> </Col>
-                    <Col span={8}>
+                    <Col span={8} style={{height:'100%'}}>
                         <div className='Code-panel'>
                             <div className='Code-bg'>
                                 <ul className='Code-content Code-waitpic'>
                                     <li>
-                                        <img src={Ordersucceed} alt='wait' style={{width:'40%',height:'40%'}}/>
+                                        <img src={Ordersucceed} alt='wait' style={{width:'30%',height:'30%'}}/>
                                     </li>
                                     <li><h3>您已取号成功</h3></li>
                                     <li><span>请留意出票口，小票已打印</span></li>
                                 </ul>
                                 <div className='Code-waitinfo'>
                                     <Row>
-                                        <Col span={1}></Col>
                                         <Col span={6}>取号时间:</Col>
-                                        <Col span={8}>2017/9/26 10:00</Col>
+                                        <Col span={10}>2017/9/26 10:00</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}>需等待桌数</Col>
@@ -62,14 +61,14 @@ export default class QueueCode extends Component{
                                         <Col span={8}>{this.state.tableTypeName}</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={8}></Col>
-                                        <Col span={8}><img src={QRcode} alt='QRcode' style={{width:'60%',heigth:'60%'}}/></Col>
-                                        <Col span={8}></Col>
+                                        <Col span={6}></Col>
+                                        <Col span={8}><img src={QRcode} alt='QRcode' style={{width:'70%',heigth:'70%'}}/></Col>
+                                        <Col span={10}></Col>
                                     </Row>
                                     <Row>
-                                        <Col span={8}></Col>
+                                        <Col span={6}></Col>
                                         <Col span={8}><Button type="danger" onClick={this.gohome}>返回首页</Button></Col>
-                                        <Col span={8}></Col>
+                                        <Col span={10}></Col>
                                     </Row>
 
                                 </div>

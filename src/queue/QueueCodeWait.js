@@ -21,7 +21,6 @@ export default class QueueCode extends Component{
 
     render(){
         return (
-
             <div className='Code'>
                 <GridHeader name='扫码入场'/>
                 <Row style={{height:'90%'}}>
@@ -53,7 +52,7 @@ export default class QueueCode extends Component{
                                     </Row>
                                     <Row>
                                         <Col span={8}>{this.state.waitPeople}</Col>
-                                        <Col span={8}>{this.state.waitTime}分钟</Col>
+                                        <Col span={8} className="Code-waitcolor">{this.state.waitTime}分钟</Col>
                                         <Col span={8}>{this.state.tableTypeName}</Col>
                                     </Row>
                                     <Row>
