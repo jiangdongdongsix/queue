@@ -1,11 +1,12 @@
 import React,{ Component } from 'react';
-import { Row,Col } from 'antd';
+import { Row,Col,Button } from 'antd';
 import GridHeader from '../component/Header/GridHeader';
 import '../style/verify.css';
 import codes from '../img/wait_pic.png'
 import QRcode from '../img/QRcode.png'
-export default class QueueCode extends Component{
+import history from './../history';
 
+export default class QueueCode extends Component{
     constructor(props) {
         super();
         let data = JSON.parse(props.match.params.queue);
@@ -18,7 +19,11 @@ export default class QueueCode extends Component{
             tableTypeName:data.tableType.tableTypeName
         };
     }
-
+    handleHome(){
+        history.push({
+            pathname:'/'
+        })
+    }
     render(){
         return (
             <div className='Code'>
@@ -36,12 +41,10 @@ export default class QueueCode extends Component{
                                 </ul>
                                 <div className='Code-waitinfo'>
                                     <Row>
-                                        <Col span={1}></Col>
                                         <Col span={6}>取号时间:</Col>
                                         <Col span={8}>2017/9/26 10:00</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={1}></Col>
                                         <Col span={6}>当前叫号:</Col>
                                         <Col span={4}>A12</Col>
                                     </Row>
@@ -58,6 +61,11 @@ export default class QueueCode extends Component{
                                     <Row>
                                         <Col span={8}></Col>
                                         <Col span={8}><img src={QRcode} alt='QRcode' style={{width:'60%',height:'60%'}}/></Col>
+                                        <Col span={8}></Col>
+                                    </Row>
+                                    <Row>
+                                        <Col span={8}></Col>
+                                        <Col span={8}><Button type="danger" onClick={this.handleHome}>返回首页</Button></Col>
                                         <Col span={8}></Col>
                                     </Row>
                                 </div>

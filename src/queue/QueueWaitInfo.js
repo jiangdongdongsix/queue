@@ -51,7 +51,7 @@ export default class QueueWaitInfo extends Component{
                 bigNumber:'C100',
                 bigWait:jsonData.queueInfo[2].waitPopulation,
                 bigTime:jsonData.queueInfo[2].waitTime,
-                bigMin:jsonData.queueInfo[2].tableType.eatMaxNumber,
+                bigMin:jsonData.queueInfo[2].tableType.eatMinNumber,
                 bigMax:jsonData.queueInfo[2].tableType.eatMaxNumber
             })
         }).catch(function () {
