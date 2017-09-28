@@ -22,7 +22,7 @@ const RouterList = (
                 <Route path ='/verify' component={QueueVerify}/>
                 <Route path='/code' component={QueueCode}/>
                 <Route path='/codeerror' component={QueueCodeError}/>
-                <Route path='/codewait' component={QueueCodeWait}/>
+                <Route path='/codewait/:queue' component={QueueCodeWait}/>
                 <Route path='/waitinfo' component={QueueWaitInfo}/>
                 <Route path='/manage' component={Manage}/>
                 <Route path='/orderinfo/:queueinfo' component={QueueOrderInfo}/>

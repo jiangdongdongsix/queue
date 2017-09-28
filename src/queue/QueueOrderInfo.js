@@ -12,9 +12,14 @@ export default class QueueCode extends Component{
     constructor(props) {
         super();
         let data = JSON.parse(props.match.params.queueinfo);
+        console.log(data);
         this.state = {
             waitTime :data.waitTime,
-            waitPeople:data.waitPopulation
+            waitPeople:data.waitPopulation,
+            queueId: data.queueId,
+            decription:data.tableType.describe,
+            tableTypeName:data.tableType.tableTypeName
+
         };
     }
 
@@ -47,14 +52,14 @@ export default class QueueCode extends Component{
                                         <Col span={8}>2017/9/26 10:00</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={1}></Col>
-                                        <Col span={6}>需等待桌数</Col>
-                                        <Col span={6}>预估时间</Col>
+                                        <Col span={8}>需等待桌数</Col>
+                                        <Col span={8}>预估时间</Col>
+                                        <Col span={8}>{this.state.decription+this.state.queueId}</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={1}></Col>
-                                        <Col span={6}>{this.state.waitPeople}</Col>
-                                        <Col span={6}>{this.state.waitTime}分钟</Col>
+                                        <Col span={8}>{this.state.waitPeople}</Col>
+                                        <Col span={8}>{this.state.waitTime}分钟</Col>
+                                        <Col span={8}>{this.state.tableTypeName}</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}></Col>
