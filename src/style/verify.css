@@ -68,6 +68,11 @@
     height:550px;
 }
 
+@media (max-width:600px){
+    .Wait-bg{
+        width:100%;
+    }
+}
 .Wait-title{
     background-color:white;
     height:30px;

@@ -2,10 +2,12 @@ import React,{Component} from 'react';
 import { Row,Col,Icon } from 'antd';
 import Time from '../Time/Time';
 import history from './../../history';
+import './GridHeader.css'
+
 export default class GridHeader extends Component{
     render(){
         return(
-        <div>
+        <div className='gridHeader'>
             <Row>
                 <Col span={12}></Col>
                 <Col span={3}><Time/></Col>
