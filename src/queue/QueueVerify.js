@@ -33,11 +33,11 @@ export default class QueueVerify extends Component{
             }).then(function (jsonData) {
             console.log(jsonData);
             if(jsonData.exflag == true){
-                fetch('/queue/cancel?queueId='+ jsonData.queueInfo.queueId).then(function(response) {
+                fetch('/queue?qid='+ jsonData.queueInfo.queueId, {
+                    method: 'DELETE',}).then(function(response) {
                     return response.json();
                 }).then(function (jsonData) {
                     console.log(jsonData);
-
                     history.push({
                         pathname: '/code'
                     })
