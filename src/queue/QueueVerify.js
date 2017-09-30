@@ -32,14 +32,7 @@ export default class QueueVerify extends Component{
                 return response.json();
             }).then(function (jsonData) {
             console.log(jsonData);
-            if(jsonData.queueInfo.waitTime >0){
-                // fetch()
-
-                history.push({
-                    pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
-                })
-            }else{
-
+            if(jsonData.exflag == true){
                 fetch('/queue/cancel?queueId='+ jsonData.queueInfo.queueId).then(function(response) {
                     return response.json();
                 }).then(function (jsonData) {
@@ -51,6 +44,11 @@ export default class QueueVerify extends Component{
                 }).catch(function () {
                     console.log('取消出错');
                 });
+
+            }else{
+                history.push({
+                    pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
+                })
             }
 
         }).catch(function () {
