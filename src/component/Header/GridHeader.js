@@ -5,6 +5,12 @@ import history from './../../history';
 import './GridHeader.css'
 
 export default class GridHeader extends Component{
+
+    cancel(){
+        history.push({
+            pathname: '/'
+        })
+    }
     render(){
         return(
         <div className='gridHeader'>
@@ -16,7 +22,7 @@ export default class GridHeader extends Component{
             <Row>
                 <Col span={8}></Col>
                 <Col span={2}>
-                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} />
+                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick = {this.cancel.bind(this)} />
                 </Col>
                 <Col span={4} style={{textAlign:'center'}}>
                     <h2>{this.props.name}</h2>
