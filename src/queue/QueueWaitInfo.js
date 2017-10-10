@@ -61,6 +61,9 @@ export default class QueueWaitInfo extends Component{
     componentDidMount(){
         this.handleWaitInfo();
     }
+    componentDidUpdate(){
+        this.handleWaitInfo();
+    }
 
     handleQueueCall(){
         history.push({
