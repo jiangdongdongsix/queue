@@ -10,7 +10,7 @@ export default class Manage extends Component{
         this.state = {
             tableID: '',
             orderNumber: '--',
-            tableNumner: '--'
+            tableNumber: '--'
         }
     }
     handleCall(event){
@@ -21,7 +21,7 @@ export default class Manage extends Component{
                 console.log(jsonData);
                 that.setState({
                     orderNumber:jsonData.extractNumber.tableNumber.tableType.describe +jsonData.extractNumber.id ,
-                    tableNumner: jsonData.extractNumber.tableNumber.name 
+                        tableNumber: jsonData.extractNumber.tableNumber.name
                     
                 }
                 );
