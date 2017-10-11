@@ -4,35 +4,30 @@ import './time.css'
 
 export default class Time extends Component{
     constructor(){
-        var date = new Date();
         super();
+        var date = new Date();
         this.state = {
-            year:date.getFullYear(),
-            month:date.getMonth()+1,
-            day:date.getDate(),
-            hour:date.getHours(),
-            minute:date.getMinutes()
+            date:new Date()
         }
     }
     componentWillMount(){
         this.timer = setInterval(()=>{
-            var date = new Date();
-            this.setState({
-                year:date.getFullYear(),
-                month:date.getMonth()+1,
-                day:date.getDate(),
-                hour:date.getHours(),
-                minute:date.getMinutes()})
-        })
+            this.setState({ date:new Date() })
+        },1000)
     }
 
+        componentWillUnMount(){
+            clearInterval(this.timer);
+        }
     render(){
         return(
             <Row>
                 <Col span={22}></Col>
                 <Col span={2}>
-                    <h2>{this.state.hour}:{this.state.minute}</h2>
-                    <p>{this.state.year}/{this.state.month}/{this.state.day}</p>
+                    {/*<h2>{this.state.hour}:{this.state.minute}</h2>*/}
+                    {/*<p>{this.state.year}/{this.state.month}/{this.state.day}</p>*/}
+                    <h2>{this.state.date.toLocaleTimeString().substring(2)}</h2>
+                    <p>{this.state.date.toLocaleDateString()}</p>
                 </Col>
             </Row>
         );
