@@ -7,26 +7,21 @@ import history from './../history';
 export default class QueueWaitInfo extends Component{
     constructor() {
         super();
-        this.state = {
-            stableType:"",
-            smallNumber:"",
-            smallWait:"",
-            smallTime:"",
-            smallMin:"",
-            smallMax:"",
-            mtableType:"",
-            middleNumber:"",
-            middleWait:"",
-            middleTime:"",
-            middleMin:"",
-            middleMax:"",
-            btableType:"",
-            bigNumber:"",
-            bigWait:"",
-            bigTime:"",
-            bigMin:"",
-            bigMax:""
-        };
+            this.state = {
+                Info:[
+                        {tableType:{
+                            description:'',
+                            eatMax: '',
+                            eatMin: '',
+                            tableNumber: '',
+                            table:'',
+                            id:''
+                        },
+                        waitPopulation:'',
+                        waitTime:''
+                    }
+                ]
+            };
     }
     handleWaitInfo(){
         let that = this;
@@ -34,26 +29,25 @@ export default class QueueWaitInfo extends Component{
             return response.json();
         }).then(function (jsonData) {
             console.log(jsonData);
-            that.setState({
-                stableType:jsonData.queueInfo[0].tableType.tableTypeName,
-                smallNumber:'A101',
-                smallWait:jsonData.queueInfo[0].waitPopulation,
-                smallTime:jsonData.queueInfo[0].waitTime,
-                smallMin:jsonData.queueInfo[0].tableType.eatMinNumber,
-                smallMax:jsonData.queueInfo[0].tableType.eatMaxNumber,
-                mtableType:jsonData.queueInfo[1].tableType.tableTypeName,
-                middleNumber:'B210',
-                middleWait:jsonData.queueInfo[1].waitPopulation,
-                middleTime:jsonData.queueInfo[1].waitTime,
-                middleMin:jsonData.queueInfo[1].tableType.eatMinNumber,
-                middleMax:jsonData.queueInfo[1].tableType.eatMaxNumber,
-                btableType:jsonData.queueInfo[2].tableType.tableTypeName,
-                bigNumber:'C100',
-                bigWait:jsonData.queueInfo[2].waitPopulation,
-                bigTime:jsonData.queueInfo[2].waitTime,
-                bigMin:jsonData.queueInfo[2].tableType.eatMinNumber,
-                bigMax:jsonData.queueInfo[2].tableType.eatMaxNumber
-            })
+            let len = jsonData.queueInfo.length;
+            console.log(len);
+            let queueInfo = []
+            for(var i=0;i<len;i++){
+                queueInfo.push({
+                        tableType:{
+                            description:jsonData.queueInfo[i].tableType.describe,
+                            eatMax: jsonData.queueInfo[i].tableType.eatMaxNumber,
+                            eatMin: jsonData.queueInfo[i].tableType.eatMinNumber,
+                            tableNumber: 101,
+                            tableName:jsonData.queueInfo[i].tableType.tableTypeName,
+                            id:jsonData.queueInfo[i].tableType.id
+                        },
+                        waitPopulation:jsonData.queueInfo[i].waitPopulation,
+                        waitTime:jsonData.queueInfo[i].waitTime
+                });
+
+            }
+            that.setState({Info:queueInfo});
         }).catch(function () {
             console.log('查看排队失败');
         });
@@ -69,6 +63,17 @@ export default class QueueWaitInfo extends Component{
     }
     
     render(){
+        const tableElements=[];      //保存渲染以后 JSX的数组
+        for(let table of this.state.Info){
+            console.log(table);
+            tableElements.push(
+            <Row className='Wait-type' key={table.tableType.id}>
+                <Col span='6'>{table.tableType.tableName}({table.tableType.eatMin}-{table.tableType.eatMax}人)</Col>
+                <Col span='6'>{table.tableType.description+table.tableType.tableNumber}</Col>
+                <Col span='6'>{table.waitPopulation}桌</Col>
+                <Col span='6'>{table.waitTime>0 ? '>'+table.waitTime+'分钟' : '无需等待'}</Col>
+            </Row>)
+        }
         return(
             <div className='Code'>
                 <GridHeader name='等位信息'/>
@@ -81,24 +86,7 @@ export default class QueueWaitInfo extends Component{
                             <Col span='6'>等待桌数</Col>
                             <Col span='6'>预估时间</Col>
                         </Row>
-                        <Row className='Wait-type'>
-                            <Col span='6'>{this.state.stableType}({this.state.smallMin}-{this.state.smallMax}人)</Col>
-                            <Col span='6'>{this.state.smallNumber}</Col>
-                            <Col span='6'>{this.state.smallWait}桌</Col>
-                            <Col span='6'>>{this.state.smallTime}分钟</Col>
-                        </Row>
-                        <Row className='Wait-type'>
-                            <Col span='6'>{this.state.mtableType}({this.state.middleMin}-{this.state.middleMax}人)</Col>
-                            <Col span='6'>{this.state.middleNumber}</Col>
-                            <Col span='6'>{this.state.middleWait}桌</Col>
-                            <Col span='6'>>{this.state.middleTime}分钟</Col>
-                        </Row>
-                        <Row className='Wait-type'>
-                            <Col span='7'>{this.state.btableType}({this.state.bigMin}-{this.state.bigMax}人)</Col>
-                            <Col span='5'>{this.state.bigNumber}</Col>
-                            <Col span='6'>{this.state. bigWait}桌</Col>
-                            <Col span='6'>>{this.state.bigTime}分钟</Col>
-                        </Row>
+                        {tableElements}
                         <Row>
                             <Col span='4'></Col>
                             <Col span='16'>
