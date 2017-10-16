@@ -18,7 +18,7 @@ export default class QueueCode extends Component{
             waitTime :data.waitTime,
             waitPeople:data.waitPopulation,
             queueId: data.queueId,
-            decription:data.tableType.describe,
+            description:data.tableType.describe,
             tableTypeName:data.tableType.tableTypeName
         };
     }
@@ -53,7 +53,7 @@ export default class QueueCode extends Component{
                                     <Row>
                                         <Col span={8}>需等待桌数</Col>
                                         <Col span={8}>预估时间</Col>
-                                        <Col span={8}><h2 style={{color:'#F27242',fontFamily:'weight',fontSize:'27px',lineHeight:'27px'}}>{this.state.decription+this.state.queueId}</h2></Col>
+                                        <Col span={8}><h2 style={{color:'#F27242',fontFamily:'weight',fontSize:'27px',lineHeight:'27px'}}>{this.state.description+this.state.queueId}</h2></Col>
                                     </Row>
                                     <Row>
                                         <Col span={8} style={{color:'#F27242'}}>{this.state.waitPeople}桌</Col>
