@@ -19,9 +19,21 @@ export default class QueueVerify extends Component{
     }
     
     addNumber(event){
-        console.log(this.value);
+        if(typeof event.target.value == 'string' && event.target.value !== "清空" && event.target.value !== "X"){
+            this.setState({queueNumber:this.state.queueNumber + event.target.value});
+        }
+        console.log(event.target.value);
     }
 
+    handleClear(){
+        this.setState({queueNumber:''});
+    }
+    handleDelete(){
+        let len = this.state.queueNumber.length;
+        if(len > 0) {
+            this.setState({queueNumber: this.state.queueNumber.slice(0, -1)});
+        }
+    }
     onChangeUserName=(e) => {
         this.setState({ queueNumber: e.target.value });
     }
@@ -103,8 +115,8 @@ export default class QueueVerify extends Component{
                                     <div className="clearFloat" style={{marginTop:'10px'}}>
                                         <div className="marginSet">
                                             <div className="keyborardContent clearFloat">
-                                                <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'70%',marginLeft:'50px'}}>
-                                                    <div><input onClick={this.addNumber.bind(this)} type="button" value="1"/></div>
+                                                <div className="keyborardLeft clearFloat" id="keyborardNumber" style={{width:'70%',marginLeft:'50px'}} onClick={this.addNumber.bind(this)}>
+                                                    <div><input type="button" value="1"/></div>
                                                     <div><input type="button" value="2"/></div>
                                                     <div><input type="button" value="3"/></div>
                                                     <div><input type="button" value="4"/></div>
@@ -113,9 +125,9 @@ export default class QueueVerify extends Component{
                                                     <div><input type="button" value="7"/></div>
                                                     <div><input type="button" value="8"/></div>
                                                     <div><input type="button" value="9"/></div>
-                                                    <div><input type="button" value="清空"/></div>
+                                                    <div><input type="button" value="清空" onClick={this.handleClear.bind(this)}/></div>
                                                     <div><input type="button" value="0"/></div>
-                                                    <div><input type="button" value="X"/></div>
+                                                    <div><input type="button" value="X" onClick={this.handleDelete.bind(this)}/></div>
                                                 </div>
                                                 <div className="keyborardRight" style={{width:'10%'}} >
                                                     <div>
