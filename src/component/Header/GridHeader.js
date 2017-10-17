@@ -13,19 +13,21 @@ export default class GridHeader extends Component{
     }
     render(){
         return(
-        <div className='gridHeader'>
+        <div>
             <Row>
                 <Col span={12}></Col>
-                <Col span={3}><Time/></Col>
+                <Col span={3} className='gridHeader'><Time/></Col>
                 <Col span={9}></Col>
             </Row>
             <Row>
                 <Col span={8}></Col>
-                <Col span={2}>
-                    <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick = {this.cancel.bind(this)} />
-                </Col>
-                <Col span={4} style={{textAlign:'center'}}>
-                    <h2>{this.props.name}</h2>
+                <Col span={8} className='gridHeader'>
+                    <Col span={11}>
+                        <Icon type="left"  style={{color:'orangered',fontSize: 20}} onClick = {this.cancel.bind(this)} />
+                    </Col>
+                    <Col span={13} style={{textAlign:'left'}}>
+                        <h2>{this.props.name}</h2>
+                    </Col>
                 </Col>
                 <Col span={8}></Col>
             </Row>
