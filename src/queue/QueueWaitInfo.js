@@ -77,9 +77,9 @@ export default class QueueWaitInfo extends Component{
         return(
             <div className='Code'>
                 <GridHeader name='等位信息'/>
-                <Row style={{height:'90%'}}>
+                <Row style={{height:'89%'}}>
                     <Col span='8'></Col>
-                    <Col span='8' className='Wait-bg' style={{height:'100%'}}>
+                    <Col span='8' className='Media-width Wait-bg' style={{height:'100%'}}>
                         <Row className='Wait-title'>
                             <Col span='6'>队列类型</Col>
                             <Col span='6'>当前叫号</Col>

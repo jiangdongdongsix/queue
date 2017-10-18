@@ -14,12 +14,12 @@ export default class QueueCode extends Component{
         let data = JSON.parse(props.match.params.queueinfo);
         console.log(data);
         this.state = {
+            date:new Date(),
             waitTime :data.waitTime,
             waitPeople:data.waitPopulation,
             queueId: data.queueId,
-            decription:data.tableType.describe,
+            description:data.tableType.describe,
             tableTypeName:data.tableType.tableTypeName
-
         };
     }
 
@@ -33,9 +33,9 @@ export default class QueueCode extends Component{
         return (
             <div className='OrderInfo'>
                 <GridHeader name='单号详情'/>
-                <Row style={{height:'90%'}}>
+                <Row style={{height:'89%'}}>
                     <Col span={8}> </Col>
-                    <Col span={8} style={{height:'100%'}}>
+                    <Col span={8} className='Media-width' style={{height:'100%'}}>
                         <div className='Code-panel'>
                             <div className='Code-bg'>
                                 <ul className='Code-content Code-waitpic'>
@@ -48,27 +48,27 @@ export default class QueueCode extends Component{
                                 <div className='Code-waitinfo'>
                                     <Row>
                                         <Col span={6}>取号时间:</Col>
-                                        <Col span={10}>2017/9/26 10:00</Col>
+                                        <Col span={10}>{this.state.date.toLocaleDateString()} {this.state.date.toLocaleTimeString().substring(2)}</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}>需等待桌数</Col>
                                         <Col span={8}>预估时间</Col>
-                                        <Col span={8}>{this.state.decription+this.state.queueId}</Col>
+                                        <Col span={8}><h2 style={{color:'#F27242',fontFamily:'weight',fontSize:'27px',lineHeight:'27px'}}>{this.state.description+this.state.queueId}</h2></Col>
                                     </Row>
                                     <Row>
-                                        <Col span={8}>{this.state.waitPeople}</Col>
-                                        <Col span={8}>{this.state.waitTime}分钟</Col>
+                                        <Col span={8} style={{color:'#F27242'}}>{this.state.waitPeople}桌</Col>
+                                        <Col span={8} style={{color:'#F27242'}}>{this.state.waitTime}分钟</Col>
                                         <Col span={8}>{this.state.tableTypeName}</Col>
                                     </Row>
                                     <Row>
-                                        <Col span={6}></Col>
-                                        <Col span={8}><img src={QRcode} alt='QRcode' style={{width:'70%',heigth:'70%'}}/></Col>
-                                        <Col span={10}></Col>
+                                        <Col span={8}></Col>
+                                        <Col span={8}><img src={QRcode} alt='QRcode' className="Order-QRCode"/></Col>
+                                        <Col span={8}></Col>
                                     </Row>
                                     <Row>
-                                        <Col span={6}></Col>
+                                        <Col span={8}></Col>
                                         <Col span={8}><Button type="danger" onClick={this.gohome}>返回首页</Button></Col>
-                                        <Col span={10}></Col>
+                                        <Col span={8}></Col>
                                     </Row>
                                 </div>
                             </div>
