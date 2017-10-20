@@ -1,11 +1,9 @@
-node_modules/
 ### Example user template template
 ### Example user template
 
 # IntelliJ project files
 .idea
-out
-gen
-build
-node_modules
-.vscode
+/npm-debug.log
+/node_modules/
+/.vscode/
+/build/
