@@ -68,8 +68,8 @@ export default class QueueWaitInfo extends Component{
             console.log(table);
             tableElements.push(
             <Row className='Wait-type' key={table.tableType.id}>
-                <Col span='6'>{table.tableType.tableName}({table.tableType.eatMin}-{table.tableType.eatMax}人)</Col>
-                <Col span='6'>{table.tableType.description+table.tableType.tableNumber}</Col>
+                <Col span='6'>{table.tableType.description}({table.tableType.eatMin}-{table.tableType.eatMax}人)</Col>
+                <Col span='6'>{table.tableType.tableName+table.tableType.tableNumber}</Col>
                 <Col span='6'>{table.waitPopulation}桌</Col>
                 <Col span='6'>{table.waitTime>0 ? '>'+table.waitTime+'分钟' : '无需等待'}</Col>
             </Row>)

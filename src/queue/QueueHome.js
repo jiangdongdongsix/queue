@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './../style/queue.css';
-import {Link} from 'react-router-dom'
 import { Icon  } from 'antd';
 import history from './../history';
 import 'whatwg-fetch';
@@ -31,7 +30,7 @@ export default class QueueHome extends Component {
     }
 
      go(){
-        let info = {"customerName": "Hubot"};
+         let info = {"customerName": "Hubot"};
          fetch('/queue/virtualqueue', {
              method: 'POST',
              headers: {

@@ -47,7 +47,7 @@ class QueueUp extends React.Component{
             }).then(function (jsonData) {
                 console.log(jsonData);
                 that.setState({ queue: {
-                    tableTypeName:jsonData.queueInfo.tableType.tableTypeName,
+                    tableTypeName:jsonData.queueInfo.tableType.describe,
                     eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
                     eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
                     waitPeople:jsonData.queueInfo.waitPopulation,

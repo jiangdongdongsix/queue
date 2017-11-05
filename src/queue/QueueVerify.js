@@ -4,6 +4,7 @@ import GridHeader from '../component/Header/GridHeader';
 import verify from '../img/verify_pic.png';
 import '../style/verify.css';
 import history from './../history';
+
 export default class QueueVerify extends Component{
 
     constructor(){
