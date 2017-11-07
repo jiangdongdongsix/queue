@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
 import './../style/queue.css';
-import { Icon  } from 'antd';
+import { Icon,Modal  } from 'antd';
 import history from './../history';
 import 'whatwg-fetch';
 export default class QueueHome extends Component {
+    state = {
+        visible: false,
+        trip:"对不起，暂时暂停营业"
+     }
+    showModal = (e) => {
+        this.setState({
+            trip:e,
+            visible: true,
+        });
+    }
+    handleOk = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    }
+    handleCancel = (e) => {
+        console.log(e);
+        this.setState({
+            visible: false,
+        });
+    }
+
+
     render() {
         return (
             <div className="App">
@@ -11,7 +35,7 @@ export default class QueueHome extends Component {
                 </div>
                 <div className="centerInfo">
                     <div className="queueInfo">
-                        <input  type="button" className="btn btn-success" value="排队抽号" onClick={this.go} />
+                        <input  type="button" className="btn btn-success" value="排队抽号" onClick={this.go.bind(this)} />
                     </div>
                     <div className="checkInfo">
                         <input  type="button" className="entry" value="入场验证" onClick={this.verfiy} />
@@ -25,11 +49,20 @@ export default class QueueHome extends Component {
                 <div className="footer">
                     <Icon type="qrcode" style={{fontSize:70 }} />
                 </div>
+                <Modal
+                    title="Basic Modal"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                >
+                    <p>{this.state.trip}</p>
+                </Modal>
             </div>
         );
     }
 
      go(){
+        const that = this;
          let info = {"customerName": "Hubot"};
          fetch('/queue/virtualqueue', {
              method: 'POST',
@@ -41,11 +74,16 @@ export default class QueueHome extends Component {
          }).then(function(response) {
              return response.json();
          }).then(function (jsonData) {
-             history.push({
-                 pathname: '/queueup/'+ jsonData.id
-             })
+             console.log(jsonData);
+             if(jsonData.ErrorCode ===  '0'){
+                 history.push({
+                     pathname: '/queueup/'+ jsonData.id
+                 })
+             }else{
+                 that.showModal(jsonData.ErrorMessage);
+             }
          }).catch(function () {
-             console.log('出错了');
+             that.showModal("网络出现故障或服务器未打开");
          });
     }
 
