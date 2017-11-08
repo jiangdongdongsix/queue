@@ -3,6 +3,7 @@
 .App {
     width: 35%;
     margin: 0 auto;
+    padding: 0;
 }
 
 /*.App-logo {*/
@@ -10,12 +11,23 @@
     /*height: 80px;*/
 /*}*/
 
+
+.Carousel{
+    width: 100%;
+}
 .App-header {
-    background: url("./../images/header.png") no-repeat;
-    padding: 170px;
-    color: white;
+    /*background: url("./../images/header.png") no-repeat;*/
+    width: 100%;
+    padding: 170px 0;
+    /*color: white;*/
     overflow: hidden;
-    background-size: 100% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /*background-repeat: space;*/
+    /*background-size: 100% auto;*/
+    background-size: cover;
 }
 
 .App-intro {

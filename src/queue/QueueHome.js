@@ -1,13 +1,28 @@
 import React, { Component } from 'react';
 import './../style/queue.css';
-import { Icon,Modal  } from 'antd';
+import { Icon,Modal,Carousel } from 'antd';
 import history from './../history';
 import 'whatwg-fetch';
+
+
+// const obj = (<div>222222222222</div>);
+
 export default class QueueHome extends Component {
-    state = {
-        visible: false,
-        trip:"对不起，暂时暂停营业"
-     }
+    constructor(){
+        super();
+        this.state = {
+            visible: false,
+            trip:"对不起，暂时暂停营业",
+            queueInfo:{
+                numberNow:"",
+                tableNumber:""
+            },
+            configInfo:[]
+        }
+    }
+
+
+
     showModal = (e) => {
         this.setState({
             trip:e,
@@ -27,11 +42,72 @@ export default class QueueHome extends Component {
         });
     }
 
+    getNumberNow = () => {
+        const that = this;
+        console.log("获取当前叫号");
+        const {queueInfo} = this.state;
+        fetch("/queue/arriving").then(function(response){
+            return response.json();
+        }).then(function(jsonData){
+            that.setState({queueInfo:{
+                numberNow:jsonData.QueueInfo.queueInfos,
+                tableNumber:jsonData.QueueInfo.tables
+            }});
+        }).catch(function(){
+            console.log("获取当前叫号失败");
+        })
+        console.log(this.state.queueInfo.numberNow);
+    }
+
+    componentWillMount(){
+        this.getNumberNow();
+        const that = this;
+        fetch("/restaurant/broadcastMachine/homePage").then(function(response) {
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData)
+            let data =[];
+            jsonData.broadcastHomePage.photoUrls.map((k,index) =>{
+                console.log(k);
+                let obj = {
+                    id:index,
+                    url:k,
+                    color:jsonData.broadcastHomePage.broadcastMachine.fontColour,
+                    fontSize:jsonData.broadcastHomePage.broadcastMachine.fontSize
+                }
+                data.push(obj);
+            })
+            that.setState({
+                configInfo:data
+            })
+        }).catch(function () {
+            console.log("失败");
+        })
+    }
+    componentDidMount(){
+        this.timer = setInterval(()=>{
+            this.getNumberNow()},6000)
+    }
+
+    componentWillUnmount () {
+        clearInterval(this.timer)
+    }
 
     render() {
+        const BannerElements=[];      //保存渲染以后 JSX的数组
+        for(let item of this.state.configInfo){
+            console.log(item);
+            BannerElements.push(
+                <div style={{backgroundImage:"url("+item.url+")",fontSize:item.fontSize,color:item.color}} className="App-header">请{this.state.queueInfo.numberNow}号顾客到{this.state.queueInfo.tableNumber}桌用餐</div>
+            )
+        }
+
         return (
             <div className="App">
-                <div className="App-header">
+                <div className="Carousel">
+                    <Carousel autoplay="true" >
+                      {BannerElements}
+                    </Carousel>
                 </div>
                 <div className="centerInfo">
                     <div className="queueInfo">
@@ -50,7 +126,7 @@ export default class QueueHome extends Component {
                     <Icon type="qrcode" style={{fontSize:70 }} />
                 </div>
                 <Modal
-                    title="Basic Modal"
+                    title="提示"
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
@@ -85,7 +161,7 @@ export default class QueueHome extends Component {
          }).catch(function () {
              that.showModal("网络出现故障或服务器未打开");
          });
-    }
+    };
 
     waitInfo(){
         history.push({
