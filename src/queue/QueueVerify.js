@@ -45,7 +45,7 @@ export default class QueueVerify extends Component{
                 return response.json();
             }).then(function (jsonData) {
             console.log(jsonData);
-            if(jsonData.exflag == true){
+            if(jsonData.extractFlag == '1'){
                 fetch('/queue?qid='+ jsonData.queueInfo.queueId, {
                     method: 'DELETE',}).then(function(response) {
                     return response.json();
@@ -59,9 +59,14 @@ export default class QueueVerify extends Component{
                 });
 
             }else{
-                history.push({
-                    pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
-                })
+                if(typeof jsonData.queueInfo != undefined){
+                    history.push({
+                        pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
+                    })
+                }else{
+                    alert("你的排号无效");
+                }
+
             }
 
         }).catch(function () {
