@@ -51,12 +51,12 @@ export default class QueueCode extends Component{
                                     <Row>
                                         <Col span={8}>等待桌数</Col>
                                         <Col span={8}>预估时间</Col>
-                                        <Col span={8}>{this.state.decription+this.state.queueId}</Col>
+                                        <Col span={8}>{this.state.tableTypeName+this.state.queueId}</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}>{this.state.waitPeople}</Col>
                                         <Col span={8} className="Code-waitcolor">{this.state.waitTime}分钟</Col>
-                                        <Col span={8}>{this.state.tableTypeName}</Col>
+                                        <Col span={8}>{this.state.decription}</Col>
                                     </Row>
                                     <Row>
                                         <Col span={8}></Col>

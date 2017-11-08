@@ -14,8 +14,8 @@ export default class QueueHome extends Component {
             visible: false,
             trip:"对不起，暂时暂停营业",
             queueInfo:{
-                numberNow:"",
-                tableNumber:""
+                numberNow:"~~",
+                tableNumber:"~"
             },
             configInfo:[]
         }
@@ -60,7 +60,7 @@ export default class QueueHome extends Component {
     }
 
     componentWillMount(){
-        this.getNumberNow();
+        // this.getNumberNow();
         const that = this;
         fetch("/restaurant/broadcastMachine/homePage").then(function(response) {
             return response.json();
@@ -85,6 +85,7 @@ export default class QueueHome extends Component {
         })
     }
     componentDidMount(){
+        this.getNumberNow();
         this.timer = setInterval(()=>{
             this.getNumberNow()},6000)
     }
