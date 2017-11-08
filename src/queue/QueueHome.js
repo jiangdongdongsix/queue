@@ -85,9 +85,9 @@ export default class QueueHome extends Component {
         })
     }
     componentDidMount(){
-        this.getNumberNow();
+        // this.getNumberNow();
         this.timer = setInterval(()=>{
-            this.getNumberNow()},6000)
+            this.getNumberNow()},3000)
     }
 
     componentWillUnmount () {

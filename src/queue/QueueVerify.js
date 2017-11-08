@@ -40,34 +40,35 @@ export default class QueueVerify extends Component{
     }
 
     verify(){
+        console.log("101010010101001010000");
         fetch("/queue/personalqueueinfo?queueNumber=" + this.state.queueNumber)
             .then(function(response) {
                 return response.json();
             }).then(function (jsonData) {
             console.log(jsonData);
-            if(jsonData.extractFlag == '1'){
-                fetch('/queue?qid='+ jsonData.queueInfo.queueId, {
-                    method: 'DELETE',}).then(function(response) {
-                    return response.json();
-                }).then(function (jsonData) {
-                    console.log(jsonData);
-                    history.push({
-                        pathname: '/code'
-                    })
-                }).catch(function () {
-                    console.log('取消出错');
-                });
-
+            if(jsonData.ErrorCode==='1'){
+                console.log("排号无效")
             }else{
-                if(typeof jsonData.queueInfo != undefined){
+                if(typeof jsonData.extractFlag !== undefined &&jsonData.extractFlag == '1'){
+                    fetch('/queue?qid='+ jsonData.queueInfo.queueId, {
+                        method: 'DELETE',}).then(function(response) {
+                        return response.json();
+                    }).then(function (jsonData) {
+                        console.log(jsonData);
+                        history.push({
+                            pathname: '/code'
+                        })
+                    }).catch(function () {
+                        console.log('取消出错');
+                    });
+
+                }else{
                     history.push({
                         pathname: '/codewait/'+ JSON.stringify(jsonData.queueInfo)
                     })
-                }else{
-                    alert("你的排号无效");
                 }
-
             }
+
 
         }).catch(function () {
             console.log('获取时间出错');
