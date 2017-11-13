@@ -8,8 +8,10 @@ class QueueUp extends React.Component{
     constructor(props) {
         super();
         this.state = {
-            userName: '',
+            eatNumber: '',
             tel:'',
+            eatNumberFocus:false,
+            telFocus:false,
             id : props.match.params.id,
             queue:{
                 tableTypeName:"--",
@@ -21,14 +23,17 @@ class QueueUp extends React.Component{
         };
     }
     emitEmpty = () => {
-        this.userNameInput.focus();
-        this.setState({ userName: '' });
+       this.eatNumberInput.focus();
+       this.setState({ eatNumber: '' });
+    }
+    emitTelEmpty= () =>{
+        this.telInput.focus();
+        this.setState({ tel: '' });
     }
 
 
-
     onChangeUserName = (e) => {
-        this.setState({ userName: e.target.value });
+        this.setState({ eatNumber: e.target.value });
         let that = this;
         if(e.target.value > 0 && e.target.value != null){
             fetch('/queue/update', {
@@ -57,9 +62,47 @@ class QueueUp extends React.Component{
                 console.log('获取时间出错');
             });
         }
+    }
 
+
+    addNumber(event){
+        if(typeof event.target.value == 'string' && event.target.value !== "清空" && event.target.value !== "X"){
+            if(this.state.eatNumberFocus){
+                this.setState({eatNumber:this.state.eatNumber + event.target.value});
+            }else if(this.state.telFocus){
+                this.setState({tel:this.state.tel + event.target.value});
+            }
+        }
+
+        console.log(event.target.value);
+    }
+
+
+
+    handleClear(){
+        if(this.state.eatNumberFocus){
+            this.setState({eatNumber:''});
+        }else if(this.state.telFocus){
+            this.setState({tel:''});
+        }
 
     }
+    handleDelete(){
+        if(this.state.eatNumberFocus){
+            let len = this.state.eatNumberFocus.length;
+            if(len > 0) {
+                this.setState({eatNumberFocus: this.state.eatNumberFocus.slice(0, -1)});
+            }
+        }else if(this.state.telFocus){
+            let len = this.state.tel.length;
+            if(len > 0) {
+                this.setState({tel: this.state.tel.slice(0, -1)});
+            }
+        }
+    }
+
+
+
 
     onChangetel = (e) => {
         this.setState({ tel: e.target.value });
@@ -97,10 +140,34 @@ class QueueUp extends React.Component{
         });
     }
 
+
+    //input 获取焦点 width: 100%
+    inputOnFocus(){
+        console.log("获得焦点")
+        this.setState({ eatNumberFocus: true,telFocus:false });
+    }
+
+    //input 失去焦点
+    inputOnBlur(){
+        console.log("失去")
+        this.setState({eatNumberFocus: true,telFocus:false  });
+    }
+    //input 获取焦点 width: 100%
+    telInputOnFocus(){
+        console.log("获得焦点")
+        this.setState({ telFocus: true,eatNumberFocus:false });
+    }
+    //input 失去焦点
+    telInputOnBlur(){
+        console.log("失去")
+        this.setState({ telFocus: true,eatNumberFocus:false });
+    }
+
     render(){
-        const { userName } = this.state;
+        const { eatNumber } = this.state;
         const { tel } = this.state;
-        const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+        const suffix = eatNumber ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+        const suffixTel = tel ? <Icon type="close-circle" onClick={this.emitTelEmpty} /> : null;
         return (
 
             <div className="my-app">
@@ -125,12 +192,15 @@ class QueueUp extends React.Component{
                 <Input
                     placeholder="请输入用餐人数"
                     prefix={<Icon type="user" />}
-                    suffix={<Icon type="right" />}
+                    suffix={suffix}
                     size="large"
-                    value={userName}
+                    value={this.state.eatNumber}
                     onChange={this.onChangeUserName.bind(this)}
-                    ref={node => this.userNameInput = node}
+                    ref={node => this.eatNumberInput = node}
+                    onBlur={this.inputOnBlur.bind(this) }
+                    onFocus={ this.inputOnFocus.bind(this) }
                 />
+
                 <div className="queueInfo">
                     <Row>
                         <Col span={8}>
@@ -157,11 +227,13 @@ class QueueUp extends React.Component{
                         <Input
                             placeholder="请输入手机号"
                             prefix={<Icon type="mobile" />}
-                            suffix={<Icon type="right" />}
+                            suffix={suffixTel}
                             size="large"
                             value={tel}
                             onChange={this.onChangetel.bind(this)}
-                            ref={node => this.userNameInput = node}
+                            ref={node => this.telInput = node}
+                            onBlur={this.telInputOnBlur.bind(this) }
+                            onFocus={ this.telInputOnFocus.bind(this) }
                         />
                     </div>
                 </Content>
@@ -169,7 +241,7 @@ class QueueUp extends React.Component{
                         <div className="keyborard clearFloat">
                             <div className="marginSet">
                                 <div className="keyborardContent clearFloat">
-                                    <div className="keyborardLeft clearFloat" id="keyborardNumber">
+                                    <div className="keyborardLeft clearFloat" id="keyborardNumber" onClick={this.addNumber.bind(this)}>
                                         <div><input type="button" value="1"/></div>
                                         <div><input type="button" value="2"/></div>
                                         <div><input type="button" value="3"/></div>
@@ -179,9 +251,9 @@ class QueueUp extends React.Component{
                                         <div><input type="button" value="7"/></div>
                                         <div><input type="button" value="8"/></div>
                                         <div><input type="button" value="9"/></div>
-                                        <div><input type="button" value="清空"/></div>
+                                        <div><input type="button" value="清空" onClick={this.handleClear.bind(this)} /></div>
                                         <div><input type="button" value="0"/></div>
-                                        <div><input type="button" value="X"/></div>
+                                        <div><input type="button" value="X"  onClick={this.handleDelete.bind(this)} /></div>
                                     </div>
                                     <div className="keyborardRight" >
                                         <div>
