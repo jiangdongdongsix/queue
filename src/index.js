@@ -18,5 +18,9 @@ ReactDOM.render(
     <Router history={history} >
         {RouterList}
     </Router>,
-    document.getElementById('root'));
+
+
+
+
+document.getElementById('root'));
 registerServiceWorker();
