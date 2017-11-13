@@ -14,6 +14,8 @@ import QueueCodeWait from './queue/QueueCodeWait'
 import QueueWaitInfo from './queue/QueueWaitInfo'
 import QueueOrderInfo from './queue/QueueOrderInfo'
 import Manage from './queue/Manage'
+
+
 const RouterList = (
             <div style={{height:'100%'}}>
                 <Route exact path='/' component={App} />

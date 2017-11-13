@@ -32,49 +32,59 @@ class QueueUp extends React.Component{
     }
 
 
+
+
+
     onChangeUserName = (e) => {
         this.setState({ eatNumber: e.target.value });
-        let that = this;
         if(e.target.value > 0 && e.target.value != null){
-            fetch('/queue/update', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    id: this.state.id,
-                    eatNumber:e.target.value,
-                    seatFlag: false
-                })
-            }).then(function(response) {
-                return response.json();
-            }).then(function (jsonData) {
-                console.log(jsonData);
-                that.setState({ queue: {
-                    tableTypeName:jsonData.queueInfo.tableType.describe,
-                    eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
-                    eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
-                    waitPeople:jsonData.queueInfo.waitPopulation,
-                    waitTime:jsonData.queueInfo.waitTime
-                } });
-            }).catch(function () {
-                console.log('获取时间出错');
-            });
+          this.updataQueueData(e.target.value);
         }
+    }
+
+
+    updataQueueData(eatNumber){
+        const that = this;
+        fetch('/queue/update', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: this.state.id,
+                eatNumber:eatNumber,
+                seatFlag: false
+            })
+        }).then(function(response) {
+            return response.json();
+        }).then(function (jsonData) {
+            console.log(jsonData);
+            that.setState({ queue: {
+                tableTypeName:jsonData.queueInfo.tableType.describe,
+                eatMaxNumber:jsonData.queueInfo.tableType.eatMaxNumber,
+                eatMinNumBer:jsonData.queueInfo.tableType.eatMinNumber,
+                waitPeople:jsonData.queueInfo.waitPopulation,
+                waitTime:jsonData.queueInfo.waitTime
+            } });
+        }).catch(function () {
+            console.log('获取时间出错');
+        });
     }
 
 
     addNumber(event){
         if(typeof event.target.value == 'string' && event.target.value !== "清空" && event.target.value !== "X"){
             if(this.state.eatNumberFocus){
+                this.eatNumberInput.focus();
                 this.setState({eatNumber:this.state.eatNumber + event.target.value});
+                this.updataQueueData(this.state.eatNumber + event.target.value);
             }else if(this.state.telFocus){
+                this.telInput.focus();
                 this.setState({tel:this.state.tel + event.target.value});
             }
         }
 
-        console.log(event.target.value);
     }
 
 
@@ -100,10 +110,6 @@ class QueueUp extends React.Component{
             }
         }
     }
-
-
-
-
     onChangetel = (e) => {
         this.setState({ tel: e.target.value });
     }
@@ -131,7 +137,6 @@ class QueueUp extends React.Component{
             return response.json();
         }).then(function (jsonData) {
             console.log(jsonData);
-
             history.push({
                 pathname: '/'
             })
