@@ -90,7 +90,6 @@ export default class QueueWaitInfo extends Component{
                         <Row>
                             <Col span='4'></Col>
                             <Col span='16'>
-                                <Button type='primary' className='Wait-button' size='large' onClick={this.handleQueueCall.bind(this)}>返回首页</Button>
                             </Col>
                             <Col span='4'></Col>
                         </Row>
